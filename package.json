@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "package-win": "electron-packager . \"Convert Case\" --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icon/icon.ico --prune=true --out=release-builds",
+    "package-win": "electron-packager . \"Convert Case\" --overwrite --asar=true --platform=win32 --arch=x64 --icon=assets/icon/icon.ico --prune=true --out=release-builds",
     "package-linux": "electron-packager . \"Convert Case\" --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icon/icon.png --prune=true --out=release-builds"
   },
   "repository": "https://bitbucket.org/emtiajium/convert_case",
