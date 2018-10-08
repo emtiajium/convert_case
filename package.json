@@ -1,7 +1,7 @@
 {
   "name": "convert_case",
-  "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "version": "0.0.1",
+  "description": "A desktop app mimicking https://convertcase.net/",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
@@ -9,15 +9,7 @@
     "package-linux": "electron-packager . \"Convert Case\" --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icon/icon.png --prune=true --out=release-builds"
   },
   "repository": "https://bitbucket.org/emtiajium/convert_case",
-  "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
-  ],
-  "author": "GitHub",
-  "license": "CC0-1.0",
+  "author": "271emtiaj@gmail.com",
   "devDependencies": {
     "electron": "^3.0.0",
     "electron-packager": "^12.2.0"
