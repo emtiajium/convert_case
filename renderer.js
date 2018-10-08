@@ -10,6 +10,10 @@ $(document).ready(() => {
 	let textSelector = $('#main-text');
 	autoSize(textSelector);
 
+	$('#sentence-case').on('click', () => {
+		textSelector.val(_string.capitalize(textSelector.val(), true));
+	});
+
 	$('#lower-case').on('click', () => {
 		textSelector.val(textSelector.val().toLowerCase());
 	});
