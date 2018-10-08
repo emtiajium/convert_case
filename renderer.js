@@ -88,8 +88,12 @@ $(document).ready(() => {
 					/**
 					 * need to consider `<forbiddenWord>?`, `<forbiddenWord>.`, `<forbiddenWord>!`
 					 */
-					return eachForbiddenWord.toLowerCase() === eachWord.toLowerCase();
+					return eachWord.toLowerCase().match(new RegExp('/' + eachForbiddenWord.toLowerCase() + "\?|\.|\!/"), 'ig') !== null;
 				});
+
+				if (eachWord.toLowerCase() === 'of?') {
+					alert(JSON.stringify(isInForbiddenWords));
+				}
 
 				if (isInForbiddenWords !== undefined) {
 					eachWord = _string.decapitalize(eachWord);
