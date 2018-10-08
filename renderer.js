@@ -85,6 +85,9 @@ $(document).ready(() => {
 		
 			_.each(wordArray, (eachWord, index) => {
 				isInForbiddenWords = _.find(forbiddenWords, (eachForbiddenWord) => {
+					/**
+					 * need to consider `<forbiddenWord>?`, `<forbiddenWord>.`, `<forbiddenWord>!`
+					 */
 					return eachForbiddenWord.toLowerCase() === eachWord.toLowerCase();
 				});
 
