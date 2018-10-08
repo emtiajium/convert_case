@@ -2,18 +2,32 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
+    <title>Convert Case</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
   </head>
   <body>
-    <h1>Hello World!</h1>
-    <!-- All of the Node.js APIs are available in this renderer process. -->
-    We are using Node.js <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
-
+    <div>
+      <textarea id="main-text"></textarea>
+    </div>
+    <div class="btn-group" role="group">
+      <button id="sentence-case" class="btn btn-sm btn-primary">Sentence Case</button>
+      <button id="lower-case" class="btn btn-sm btn-primary">Lower Case</button>
+      <button id="upper-case" class="btn btn-sm btn-primary">Upper Case</button>
+      <button id="capitalized-case" class="btn btn-sm btn-primary">Capitalized Case</button>
+    </div>
+    <br />
+    <div class="btn-group" role="group">
+      <button id="alternating-case" class="btn btn-sm btn-primary">Alternating Case</button>
+      <button id="title-case" class="btn btn-sm btn-primary">Title Case</button>
+      <button id="inverse-case" class="btn btn-sm btn-primary">Inverse Case</button>
+      <button id="clear-text" class="btn btn-sm btn-primary">Clear Text</button>
+    </div>
     <script>
       // You can also require other files to run in this process
-      require('./renderer.js')
+      require('./renderer.js');
+      require('./node_modules/jquery/dist/jquery.min');
+      require('./node_modules/bootstrap/dist/js/bootstrap.min');
+      require('./node_modules/autosize/dist/autosize.min');
     </script>
   </body>
 </html>

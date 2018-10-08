@@ -1,12 +1,12 @@
 {
-  "name": "electron-quick-start",
+  "name": "convert_case",
   "version": "1.0.0",
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": "https://bitbucket.org/emtiajium/convert_case",
   "keywords": [
     "Electron",
     "quick",
@@ -18,5 +18,11 @@
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^3.0.0"
+  },
+  "dependencies": {
+    "autosize": "^4.0.2",
+    "bootstrap": "^4.1.3",
+    "jquery": "^3.3.1",
+    "underscore.string": "^3.3.5"
   }
 }
