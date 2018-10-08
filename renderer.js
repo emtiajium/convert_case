@@ -3,8 +3,10 @@
  */
 
 const $ = require('jquery');
+const _ = require('underscore');
 const _string = require('underscore.string');
 const autoSize = require('autosize');
+const prepositions = require('prepositions');
 
 $(document).ready(() => {
 	let textSelector = $('#main-text');
@@ -39,7 +41,72 @@ $(document).ready(() => {
 	});
 
 	$('#title-case').on('click', () => {
-		textSelector.val(_string.titleize(textSelector.val()));
+
+		/**
+		 * https://www.grammarbook.com/punctuation/capital.asp
+		 */
+		
+		let capitalizeTitle = (title) => {
+			let coordinatingConjunction = [
+				'and',
+				'or',
+				'nor',
+				'but',
+				'for',
+				'yet',
+				'so'
+			];
+
+			let article = [
+				'a',
+				'an',
+				'the'
+			];
+
+			let to = [
+				'to'
+			];
+
+			let other = [
+				'etc'
+			];
+
+			let forbiddenWords = prepositions.concat(coordinatingConjunction);
+			forbiddenWords = forbiddenWords.concat(article);
+			forbiddenWords = forbiddenWords.concat(to);
+			forbiddenWords = forbiddenWords.concat(other);
+
+			forbiddenWords = _.unique(forbiddenWords);
+
+			title = _string.titleize(title);
+		
+			let wordArray = _string.words(title);
+			let isInForbiddenWords = undefined;
+		
+			_.each(wordArray, (eachWord, index) => {
+				isInForbiddenWords = _.find(forbiddenWords, (eachForbiddenWord) => {
+					return eachForbiddenWord.toLowerCase() === eachWord.toLowerCase();
+				});
+
+				if(isInForbiddenWords !== undefined) {
+					eachWord = _string.decapitalize(eachWord);
+					wordArray[index] = eachWord;
+				}
+		
+				isInForbiddenWords = undefined;
+			});
+		
+			title = wordArray.join(' ');
+			title = _string.clean(title);
+			/**
+			 * to Kill a Mockingbird
+			 * To Kill a Mockingbird
+			 */
+			title = title.charAt(0).toUpperCase() + title.slice(1);
+		
+			return title;
+		};
+		textSelector.val(capitalizeTitle(textSelector.val()));
 	});
 
 	$('#inverse-case').on('click', () => {
