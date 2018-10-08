@@ -88,7 +88,7 @@ $(document).ready(() => {
 					return eachForbiddenWord.toLowerCase() === eachWord.toLowerCase();
 				});
 
-				if(isInForbiddenWords !== undefined) {
+				if (isInForbiddenWords !== undefined) {
 					eachWord = _string.decapitalize(eachWord);
 					wordArray[index] = eachWord;
 				}
