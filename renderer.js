@@ -101,13 +101,16 @@ $(document).ready(() => {
 				isInForbiddenWords = _.find(forbiddenWords, (eachForbiddenWord) => {
 					/**
 					 * need to consider `<forbiddenWord>?`, `<forbiddenWord>.`, `<forbiddenWord>!`
+					 * ?
+					 * .
+					 * !
+					 * '
+					 * "
 					 */
-					return eachWord.toLowerCase().match(new RegExp('/' + eachForbiddenWord.toLowerCase() + "\?|\.|\!/"), 'ig') !== null;
+					let condition = (eachWord.toLowerCase() === eachForbiddenWord.toLowerCase())
+						|| (eachWord.toLowerCase().match(new RegExp(eachForbiddenWord.toLowerCase() + "\\?|\\.|\\!|\\'" + '|' + '\\"' , 'i')) !== null);
+					return condition;
 				});
-
-				if (eachWord.toLowerCase() === 'of?') {
-					alert(JSON.stringify(isInForbiddenWords));
-				}
 
 				if (isInForbiddenWords !== undefined) {
 					eachWord = _string.decapitalize(eachWord);
