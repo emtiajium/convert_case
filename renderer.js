@@ -21,7 +21,21 @@ $(document).ready(() => {
 	});
 
 	$('#sentence-case').on('click', () => {
-		textSelector.val(_string.capitalize(textSelector.val(), true));
+		let text = _string.capitalize(textSelector.val(), true);
+		_.each(text, (eachCharacter, index) => {
+			let condition = text[index -2] === '.'
+				|| text[index -2] === '!'
+				|| text[index -2] === '?'
+				|| text[index -2] === '\''
+				|| text[index -2] === '"';
+			if (index > -1 && text[index -1] === ' ' && condition) {
+				text = text.slice(0, index) +  text.charAt(index).toUpperCase() + text.slice(index + 1);
+			}
+			else if (text[index].toLowerCase() === 'i') {
+				text = text.slice(0, index) +  text.charAt(index).toUpperCase() + text.slice(index + 1);
+			}
+		});
+		textSelector.val(text);
 	});
 
 	$('#lower-case').on('click', () => {
