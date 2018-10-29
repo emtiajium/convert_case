@@ -51,7 +51,23 @@ $(document).ready(() => {
 	});
 
 	$('#alternating-case').on('click', () => {
-		textSelector.val(_string.swapCase(textSelector.val()));
+		let words = _string.words(textSelector.val());
+		let aWord;
+		let wordArray = [];
+		_.each(words, (eachWord) => {
+      aWord = '';
+			_.each(eachWord, (eachCharacter, index) => {
+				if ((index % 2) === 0) {
+          eachCharacter = eachCharacter.toLowerCase();
+				}
+				else {
+          eachCharacter = eachCharacter.toUpperCase();
+        }
+        aWord += eachCharacter;
+			});
+			wordArray.push(aWord);
+		});
+		textSelector.val(wordArray.join(' '));
 	});
 
 	$('#title-case').on('click', () => {
@@ -134,7 +150,23 @@ $(document).ready(() => {
 	});
 
 	$('#inverse-case').on('click', () => {
-		textSelector.val(_string.swapCase(textSelector.val()));
+    let words = _string.words(textSelector.val());
+    let aWord;
+    let wordArray = [];
+    _.each(words, (eachWord) => {
+      aWord = '';
+      _.each(eachWord, (eachCharacter, index) => {
+        if ((index % 2) === 1) {
+          eachCharacter = eachCharacter.toLowerCase();
+        }
+        else {
+          eachCharacter = eachCharacter.toUpperCase();
+        }
+        aWord += eachCharacter;
+      });
+      wordArray.push(aWord);
+    });
+    textSelector.val(wordArray.join(' '));
 	});
 
 	$('#clear-text').on('click', () => {
