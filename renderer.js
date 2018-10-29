@@ -18,6 +18,7 @@ $(document).ready(() => {
 	textSelector.on('keyup', () => {
 		$('#character-count').text(textSelector.val().length);
 		$('#word-count').text(_string.words(textSelector.val()).length);
+    $('#line-count').text(_string.lines(textSelector.val()).length);
 	});
 
 	$('#sentence-case').on('click', () => {
